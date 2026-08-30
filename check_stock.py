@@ -45,7 +45,7 @@ print("Current:", current_state)
 with open(state_file, "w") as f:
     f.write(current_state)
 
-if True:
+if previous_state == "out" and current_state == "in":
 
     message = (
         "🚨🚨 BLUE OUD IS BACK IN STOCK! 🚨🚨\n\n"
