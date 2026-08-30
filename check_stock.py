@@ -19,17 +19,14 @@ soup = BeautifulSoup(html, "html.parser")
 
 text = soup.get_text(" ", strip=True).lower()
 
-# Detect availability
 out_of_stock = "out of stock" in text
 
-# Look for common purchase/availability indicators
 in_stock = (
     "add to cart" in text
     or "add to bag" in text
     or "buy now" in text
 )
 
-# Store previous state
 state_file = "stock_state.txt"
 
 if os.path.exists(state_file):
@@ -45,19 +42,15 @@ else:
 print("Previous:", previous_state)
 print("Current:", current_state)
 
-# Save current state
 with open(state_file, "w") as f:
     f.write(current_state)
 
-# Only alert when it changes from OUT -> IN
-if True:
+if previous_state == "out" and current_state == "in":
 
     message = (
-        message = (
-    "🧪 BLUE OUD MONITOR TEST\n\n"
-    "Your Telegram restock alert is working!\n\n"
-    f"PRODUCT:\n{PRODUCT_URL}"
-
+        "🚨🚨 BLUE OUD IS BACK IN STOCK! 🚨🚨\n\n"
+        "Ibrahim Al Qurashi Blue Oud 100ml\n\n"
+        f"BUY NOW:\n{PRODUCT_URL}"
     )
 
     telegram_url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
