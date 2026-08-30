@@ -50,12 +50,14 @@ with open(state_file, "w") as f:
     f.write(current_state)
 
 # Only alert when it changes from OUT -> IN
-if previous_state == "out" and current_state == "in":
+if True:
 
     message = (
-        "🚨🚨 BLUE OUD IS BACK IN STOCK! 🚨🚨\n\n"
-        "Ibrahim Al Qurashi Blue Oud 100ml\n\n"
-        f"BUY NOW:\n{PRODUCT_URL}"
+        message = (
+    "🧪 BLUE OUD MONITOR TEST\n\n"
+    "Your Telegram restock alert is working!\n\n"
+    f"PRODUCT:\n{PRODUCT_URL}"
+
     )
 
     telegram_url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
